@@ -18,11 +18,11 @@ end
 #  exit 1
 #end
 
-if ! File.exists?('./SQLEXPRWT_x64_ENU.exe')
-  puts 'SQL Server installer could not be found!'
-  puts "Please run:\n curl -O http://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPRWT_x64_ENU.exe"
-  exit 1
-end
+#if ! File.exists?('./SQLEXPRWT_x64_ENU.exe')
+#  puts 'SQL Server installer could not be found!'
+#  puts "Please run:\n curl -O http://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPRWT_x64_ENU.exe"
+#  exit 1
+#end
 
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|  
@@ -43,19 +43,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.vm.provision :shell, path: "vagrant-scripts/install-msbuild-tools-2013.cmd"
   
   # Database
-  config.vm.provision :shell, path: "vagrant-scripts/install-sql-server.cmd" 
-  config.vm.provision :shell, path: "vagrant-scripts/configure-sql-server.ps1"  
+  #config.vm.provision :shell, path: "vagrant-scripts/install-sql-server.cmd" 
+  #config.vm.provision :shell, path: "vagrant-scripts/configure-sql-server.ps1"  
   
   #Restore DB
-  config.vm.provision :shell, path: "vagrant-scripts/create-database.cmd"
+  #config.vm.provision :shell, path: "vagrant-scripts/create-database.cmd"
    
   # IIS   
   config.vm.provision :shell, path: "vagrant-scripts/install-iis.cmd"
     
   #Create Website
-  config.vm.provision :shell, path: "vagrant-scripts/copy-website.ps1"
+  #config.vm.provision :shell, path: "vagrant-scripts/copy-website.ps1"
   #config.vm.provision :shell, path: "vagrant-scripts/build-website.cmd"
-  config.vm.provision :shell, path: "vagrant-scripts/creating-website-in-iis.cmd"
-  config.vm.provision :shell, path: "vagrant-scripts/setup-permissions-for-website-folder.ps1"
+  #config.vm.provision :shell, path: "vagrant-scripts/creating-website-in-iis.cmd"
+  #config.vm.provision :shell, path: "vagrant-scripts/setup-permissions-for-website-folder.ps1"
   
 end
